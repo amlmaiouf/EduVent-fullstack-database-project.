@@ -1,0 +1,53 @@
+/* Background for the body */
+body {
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('img/background.jpg');
+    background-size: cover;
+    background-position: center center;
+    color: #333;
+}
+
+/* Header background */
+header.bg-danger {
+    background-color: #d9534f; /* Red background */
+}
+
+/* Form Styling */
+form {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Styling */
+button[type="submit"] {
+    background-color: #d9534f; /* Red */
+    color: white;
+    border: none;
+}
+
+    button[type="submit"]:hover {
+        background-color: #c9302c; /* Darker Red */
+    }
+
+/* Footer Styling */
+footer {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+    footer p {
+        margin: 0;
+        font-size: 14px;
+        color: #555;
+    }
+
+/* Additional styling */
+h1 {
+    font-size: 36px;
+    color: #444;
+}

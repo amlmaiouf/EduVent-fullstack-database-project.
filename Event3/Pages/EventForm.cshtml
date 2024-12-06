@@ -1,0 +1,89 @@
+﻿@page
+@model Event3.Pages.Index1Model
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Event Registration</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/gijgo.css">
+    <link rel="stylesheet" href="css/nice-select.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/slicknav.css">
+    <link rel="stylesheet" href="css/styleee.css">
+</head>
+<body>
+    <header class="bg-danger text-white py-3">
+        <!-- Add a navigation bar or logo here if needed -->
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#">Event Registration</a>
+        </nav>
+    </header>
+
+    <main class="container mt-5">
+        <h1 class="text-center">Set Up Your Event</h1>
+        <form method="post" class="mt-4">
+            <div class="form-group">
+                <label for="event-name">Event Name:</label>
+                <input type="text" class="form-control" id="event-name" name="EventName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="event-date">Date:</label>
+                <input type="date" class="form-control" id="event-date" name="EventDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="event-location">Location:</label>
+                <input type="text" class="form-control" id="event-location" name="EventLocation" required>
+            </div>
+
+            <div class="form-group">
+                <label for="event-description">Description:</label>
+                <textarea class="form-control" id="event-description" name="EventDescription" rows="4" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Event</button>
+        </form>
+    </main>
+
+    <footer class="text-center mt-5">
+        <p>&copy; 2024 Event Registration. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript here -->
+    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/ajax-form.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/scrollIt.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/nice-select.min.js"></script>
+    <script src="js/jquery.slicknav.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
