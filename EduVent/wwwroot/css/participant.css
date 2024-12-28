@@ -1,0 +1,97 @@
+﻿/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Styling the Body */
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #C3B1E1; /* Background color for the whole page */
+    color: #333; /* Text color */
+    line-height: 1.6;
+  }
+  
+  /* Navbar Section */
+  .navbar {
+    background-color: #5A67D8; /* Darker color for the navbar */
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .navbar .btn {
+    background-color: #ffffff;
+    color: #5A67D8; /* Matching color for navbar buttons */
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: 0 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .navbar .btn:hover {
+    background-color: #7F5BFF;
+    color: #ffffff; /* Change text color on hover */
+  }
+  
+  /* Events Section */
+  .events-section {
+    padding: 40px;
+    background-color: #ffffff; /* White background for events area */
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .events-section h2 {
+    color: #5A67D8;
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  /* Event Card Styling */
+  .event {
+    background-color: #f9f9f9;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .event h3 {
+    color: #5A67D8;
+    font-size: 1.5rem;
+  }
+  
+  .event p {
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  .register-btn {
+    background-color: #48BB78;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .register-btn:hover {
+    background-color: #38A169;
+  }
+  
+  /* Footer Section */
+  footer {
+    background-color: #5A67D8;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-top: 30px;
+  }
+  
