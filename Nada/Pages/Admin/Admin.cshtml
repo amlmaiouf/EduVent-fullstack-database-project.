@@ -1,0 +1,211 @@
+﻿@page
+@model Database_Project.Pages.Admin.AdminEventsModel
+@{
+    ViewData["Title"] = "Manage Events";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage Events</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #C3B1E1;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .container {
+            margin-top: 50px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-container {
+            margin-top: 30px;
+        }
+
+        .table th,
+        .table td {
+            text-align: center;
+        }
+
+        .btn-delete,
+        .btn-edit-event,
+        .btn-view-details {
+            background-color: #6A4C9C;
+            color: white;
+            border-radius: 10px;
+            padding: 5px 15px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+            .btn-delete:hover,
+            .btn-edit-event:hover,
+            .btn-view-details:hover {
+                background-color: #5B3A8D;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+        .page-title {
+            text-align: center;
+            font-size: 32px;
+            color: #6A4C9C;
+        }
+
+        .modal-header {
+            background-color: #6A4C9C;
+            color: white;
+        }
+
+        .modal-footer button {
+            background-color: #6A4C9C;
+            color: white;
+        }
+
+            .modal-footer button:hover {
+                background-color: #5a3991;
+            }
+
+        .logo {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            width: 80px;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="page-title">Manage Events</h2>
+
+        <div class="table-container">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Event Name</th>
+                        <th>Event Date</th>
+                        <th>Event Location</th>
+                        <th>Event Description</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var Event_Item in Model.Events)
+                    {
+                        <tr>
+                            <td>@Event_Item.Event_Name</td>
+                            <td>@Event_Item.Event_Date.ToString("yyyy-MM-dd HH:mm")</td>
+                            <td>@Event_Item.Event_Location</td>
+                            <td>@Event_Item.Event_Description</td>
+                            <td>@Event_Item.Event_Status</td>
+                            <td>
+                                
+                                <button class="btn-edit-event" onclick="editEvent(@Event_Item.Event_Id)" data-bs-toggle="modal" data-bs-target="#editModal">
+                                    Edit
+                                </button>
+                               
+                                <a href="javascript:void(0);" onclick="deleteEvent(@Event_Item.Event_Id)" class="btn-delete">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Edit Event Modal -->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Edit Event</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editForm" method="post">
+                            <input type="hidden" id="Event_Id" name="Event_Id" />
+                            <div>
+                                <label for="Event_Name">Event Name</label>
+                                <input type="text" id="Event_Name" name="Event_Name" class="form-control" required />
+                            </div>
+                            <div>
+                                <label for="Event_Date">Event Date</label>
+                                <input type="datetime-local" id="Event_Date" name="Event_Date" class="form-control" required />
+                            </div>
+                            <div>
+                                <label for="Event_Location">Event Location</label>
+                                <input type="text" id="Event_Location" name="Event_Location" class="form-control" required />
+                            </div>
+                            <div>
+                                <label for="Event_Description">Event Description</label>
+                                <input type="text" id="Event_Description" name="Event_Description" class="form-control" required />
+                            </div>
+                            <div>
+                                <label for="Event_Status">Event Status</label>
+                                <select id="Event_Status" name="Event_Status" class="form-select" required>
+                                    <option value="Upcoming">Upcoming</option>
+                                    <option value="Ongoing">Ongoing</option>
+                                    <option value="Completed">Completed</option>
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function editEvent(Event_Id) {
+            fetch(`/AdminEvents?handler=GetEventById&eventId=${Event_Id}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('Event_Id').value = data.Event_Id;
+                    document.getElementById('Event_Name').value = data.Event_Name;
+                    document.getElementById('Event_Date').value = data.Event_Date;
+                    document.getElementById('Event_Location').value = data.Event_Location;
+                    document.getElementById('Event_Description').value = data.Event_Description;
+                    document.getElementById('Event_Status').value = data.Event_Status;
+                });
+        }
+
+        function deleteEvent(Event_Id) {
+            if (confirm("Are you sure you want to delete this event?")) {
+                fetch(`/AdminEvents?handler=DeleteEvent&eventId=${Event_Id}`, {
+                    method: 'POST', 
+                    body: JSON.stringify({ eventId: Event_Id }), 
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => response.text())
+                    .then(() => {
+                        location.reload(); 
+                    });
+            }
+        }
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
